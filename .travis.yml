@@ -1,0 +1,13 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+- docker build -t kalyzee/streaming-vod .
+
+deploy:
+  provider: script
+  script: bash deploy/docker_push.sh
+  on:
+    branch: master
