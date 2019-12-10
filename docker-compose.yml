@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  streaming-vod:
+    image: kalyzee/streaming-vod
+    build: .
+    volumes:
+      - media:/opt/static/videos
+    ports:
+     - 8082:80
+
+volumes:
+    media:

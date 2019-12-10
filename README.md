@@ -17,6 +17,8 @@ dependencies, building the image is as simple as running a ``docker build``:
 docker build -t nytimes/nginx-vod-module .
 ```
 
+Dev : port 8082
+
 Docker Hub
 ----------
 
