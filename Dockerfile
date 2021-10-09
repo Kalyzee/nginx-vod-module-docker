@@ -23,7 +23,14 @@ RUN make install
 RUN rm -rf /usr/local/nginx/html /usr/local/nginx/conf/*.default
 
 FROM base_image
-RUN apk add --no-cache ca-certificates openssl pcre zlib ffmpeg
+
+ENV TZ Europe/Paris
+
+RUN apk add --no-cache ca-certificates openssl pcre zlib ffmpeg tzdata
+
+RUN cp /usr/share/zoneinfo/Europe/Paris /etc/localtime
+RUN echo "Europe/Paris" >  /etc/timezone
+
 COPY --from=build /usr/local/nginx /usr/local/nginx
 COPY conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
